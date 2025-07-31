@@ -44,10 +44,11 @@ def main():
         screen.fill((0, 0, 0))
         updatable.update(dt)
         for shot in shots:
-            if shot.collides_with(asteroid):
-                shots.remove(shot)
-                asteroid.split()
-                break
+            for asteroid in asteroids:
+                if shot.collides_with(asteroid):
+                    shots.remove(shot)
+                    asteroid.split()
+                    break
 
         for asteroid in asteroids:
             if player.collides_with(asteroid):
